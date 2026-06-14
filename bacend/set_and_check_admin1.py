@@ -9,8 +9,11 @@ from accounts.models import CustomUser
 from django.contrib.auth import authenticate
 import requests
 
-USERNAME = 'admin1'
-NEW_PASSWORD = '12345'
+USERNAME = os.getenv('SET_ADMIN1_USERNAME', 'admin1')
+NEW_PASSWORD = os.getenv('SET_ADMIN1_PASSWORD')
+
+if not NEW_PASSWORD:
+    raise RuntimeError('SET_ADMIN1_PASSWORD environment variable is required for this script')
 
 # Ensure user exists and set password
 try:

@@ -14,11 +14,15 @@ if admin:
     print(f"✅ Admin found: {admin.username}, role={admin.role}, is_staff={admin.is_staff}")
     
     # Test authenticate
-    user = authenticate(username='admin', password='admin123')
-    if user:
-        print(f"✅ Authentication works! User: {user.username}")
+    admin_check_password = os.getenv('CHECK_ADMIN_PASSWORD')
+    if admin_check_password:
+        user = authenticate(username='admin', password=admin_check_password)
+        if user:
+            print(f"✅ Authentication works! User: {user.username}")
+        else:
+            print("❌ Authentication failed! Password incorrect or user disabled")
     else:
-        print("❌ Authentication failed! Password incorrect or user disabled")
+        print("⚠️ Skipped authentication test for admin: set CHECK_ADMIN_PASSWORD environment variable to enable")
 else:
     print("❌ Admin user not found")
 

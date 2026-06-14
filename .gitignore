@@ -18,3 +18,11 @@ dist/
 build/
 coverage/
 *.sqlite3
+
+# Local test/debug scripts (do not commit to repo)
+test_*.py
+debug_*.py
+check_admin.py
+set_and_check_admin1.py
+update_admin_role.py
+create_users.py

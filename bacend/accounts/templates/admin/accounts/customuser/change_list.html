@@ -1,0 +1,13 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools %}
+{{ block.super }}
+<div class="object-tools">
+    <form action="delete-non-admins/" method="post" style="display:inline; margin-left:8px;">
+        {% csrf_token %}
+        <button type="submit" class="button"
+            onclick="return confirm('Are you sure you want to delete ALL non-admin users? This is irreversible.');">Delete
+            all non-admin users</button>
+    </form>
+</div>
+{% endblock %}
